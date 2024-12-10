@@ -1,8 +1,15 @@
 from django.contrib.auth.models import AbstractUser
+from django.db import models
 
 
 class UserAccount(AbstractUser):
-    pass
+    first_name = last_name = is_staff = date_joined = \
+        is_superuser = groups = user_permissions = None
+
+    full_name = models.CharField(max_length=100)
+    phone = models.CharField(max_length=50)
+    password = models.CharField(max_length=50)
+    email = models.EmailField()
 
 
 class Admin(UserAccount):
@@ -14,8 +21,9 @@ class Manager(UserAccount):
 
 
 class Teacher(UserAccount):
-    pass
+    address = models.CharField(max_length=100)
 
 
 class Student(UserAccount):
-    pass
+    address = models.CharField(max_length=100)
+    parent_phone = models.CharField(max_length=50)
