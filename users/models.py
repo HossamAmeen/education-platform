@@ -26,4 +26,4 @@ class Teacher(UserAccount):
 
 class Student(UserAccount):
     address = models.CharField(max_length=100)
-    Parents_mobile = models.CharField(max_length=50)
+    parent_phone = models.CharField(max_length=50)
