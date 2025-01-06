@@ -1,6 +1,20 @@
+from django.contrib.auth.hashers import make_password
 from rest_framework import serializers
 
-from users.models import Admin, Manager, Student, Teacher
+from users.models import Admin, Manager, Student, Teacher, UserAccount
+
+
+class UserAccountSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = UserAccount
+        fields = ['id', 'email', 'password', 'phone']
+        extra_kwargs = {
+            'password': {'write_only': True, 'required': True}
+        }
+
+    def validate_password(self, value):
+        return make_password(value)
 
 
 class AdminSerializer(serializers.ModelSerializer):
@@ -13,6 +27,9 @@ class AdminSerializer(serializers.ModelSerializer):
             'password': {'write_only': True, 'required': True}
         }
 
+    def validate_password(self, value):
+        return make_password(value)
+
 
 class ManagerSerializer(serializers.ModelSerializer):
 
@@ -23,6 +40,9 @@ class ManagerSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'password': {'write_only': True, 'required': True}
         }
+
+    def validate_password(self, value):
+        return make_password(value)
 
 
 class TeacherSerializer(serializers.ModelSerializer):
@@ -35,6 +55,9 @@ class TeacherSerializer(serializers.ModelSerializer):
             'password': {'write_only': True, 'required': True}
         }
 
+    def validate_password(self, value):
+        return make_password(value)
+
 
 class StudentSerializer(serializers.ModelSerializer):
 
@@ -45,3 +68,6 @@ class StudentSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'password': {'write_only': True, 'required': True}
         }
+
+    def validate_password(self, value):
+        return make_password(value)
