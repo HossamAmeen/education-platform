@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from course.models import City, Course, Group, Semester
+from course.models import City, Course, Group, Lesson, Semester, Subject
 from users.serializers import StudentSerializer, TeacherSerializer
 
 
@@ -39,3 +39,17 @@ class ListCourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
         fields = '__all__'
+
+
+class LessonSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Lesson
+        fields = ['id', 'title', 'date', 'time']
+
+
+class SubjectSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Subject
+        fields = ['id', 'name', 'available', 'image']
