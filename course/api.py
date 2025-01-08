@@ -1,9 +1,10 @@
 from rest_framework.viewsets import ModelViewSet
 
-from course.models import City, Course, Group, Semester
+from course.models import City, Course, Group, Lesson, Semester, Subject
 from course.serializer import (CitySerializer, CourseSerializer,
-                               GroupSerializer, ListCourseSerializer,
-                               SemesterSerializer)
+                               GroupSerializer, LessonSerializer,
+                               ListCourseSerializer, SemesterSerializer,
+                               SubjectSerializer)
 
 
 class CityViewSet(ModelViewSet):
@@ -28,3 +29,14 @@ class CourseViweSet(ModelViewSet):
         if self.request.method == 'GET':
             return ListCourseSerializer
         return CourseSerializer
+
+
+class LessonViewSet(ModelViewSet):
+
+    queryset = Lesson.objects.order_by('-id')
+    serializer_class = LessonSerializer
+
+
+class SubjectViewSet(ModelViewSet):
+    queryset = Subject.objects.order_by('-id')
+    serializer_class = SubjectSerializer
