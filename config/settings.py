@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django_filters',
     'course',
     'auth',
+    'configuration',
 ]
 AUTH_USER_MODEL = 'users.UserAccount'
 REST_FRAMEWORK = {
