@@ -8,7 +8,6 @@ class UserAccount(AbstractUser):
 
     full_name = models.CharField(max_length=100)
     phone = models.CharField(max_length=50, unique=True)
-    password = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
     is_active = models.BooleanField(default=True)
 
@@ -26,7 +25,7 @@ class UserAccount(AbstractUser):
             return "student"
 
     def __str__(self):
-        return self.username
+        return self.email
 
 
 class Admin(UserAccount):
