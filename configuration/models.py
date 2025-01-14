@@ -1,4 +1,8 @@
 from django.db import models
 
-# flake8: noqa
-# Create your models here.
+
+class Slider(models.Model):
+    description = models.TextField(null=True)
+    image = models.ImageField(upload_to='media/')
+    ordering = models.IntegerField()
+    link = models.URLField(null=True)
