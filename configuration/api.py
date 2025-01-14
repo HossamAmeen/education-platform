@@ -5,5 +5,5 @@ from configuration.serializer import SliderSerializer
 
 
 class SliderViewSet(ModelViewSet):
-    queryset = Slider.objects.order_by('-id')
+    queryset = Slider.objects.order_by('ordering')
     serializer_class = SliderSerializer
