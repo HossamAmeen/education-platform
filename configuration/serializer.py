@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
-from configuration.models import Configuration, Slider
+
+from configuration.models import Configuration, Slider, Review
 
 
 class SliderSerializer(serializers.ModelSerializer):
@@ -9,6 +10,12 @@ class SliderSerializer(serializers.ModelSerializer):
         model = Slider
         fields = '__all__'
 
+
+class ReviewSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Review
+        fields = '__all__'
 
 class ConfigurationSerializer(serializers.ModelSerializer):
 

@@ -1,3 +1,4 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 
@@ -7,6 +8,14 @@ class Slider(models.Model):
     ordering = models.IntegerField()
     link = models.URLField(null=True)
 
+
+
+class Review(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField(null=True)
+    rate = models.IntegerField(validators=[
+        MinValueValidator(1), MaxValueValidator(5)])
+    ordering = models.IntegerField()
 
 class Configuration(models.Model):
     phone_number_1 = models.CharField(max_length=15)
@@ -21,3 +30,4 @@ class Configuration(models.Model):
     twitter = models.URLField(null=True)
     linkedin = models.URLField(null=True)
     googel = models.URLField(null=True)
+
