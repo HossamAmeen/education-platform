@@ -44,12 +44,14 @@ INSTALLED_APPS = [
     'course',
     'auth',
     'configuration',
+    'drf_spectacular',
 ]
 AUTH_USER_MODEL = 'users.UserAccount'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
     'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
 }
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
