@@ -79,6 +79,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+if DEBUG:
+    MIDDLEWARE.append('query_inspector.middleware.QueryCountMiddleware')
 
 ROOT_URLCONF = 'config.urls'
 
