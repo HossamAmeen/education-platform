@@ -6,7 +6,7 @@ from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from auth.models import PasswordReset
-from auth.serializer import (ResetPasswordRequestSerializer,
+from auth.serializer import (LoginSerializer, ResetPasswordRequestSerializer,
                              ResetPasswordSerializer)
 from users.models import UserAccount
 from users.serializers import UserAccountSerializer
@@ -24,6 +24,8 @@ class RegisterUserAccountAPI(APIView):
 
 
 class LoginAPI(APIView):
+    serializer_class = LoginSerializer
+
     def post(self, request):
         username = request.data.get("username")
         password = request.data.get("password")
