@@ -36,7 +36,7 @@ SECRET_KEY = 'django-insecure-w+(u4=#hd4r(4le$uv&=pizeo5c^%a@)ruf%eog@x*#lga1@$l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['baron-api.egypal.fr' ,'127.0.0.1', 'localhost']
 sentry_sdk.init(
     dsn="https://13743427697e9d926d3a1218c1653ebf@o4508088349032448.ingest.de.sentry.io/4508654916206672",
     integrations=[DjangoIntegration()],
