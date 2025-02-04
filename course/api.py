@@ -1,10 +1,13 @@
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 
 from course.models import City, Course, Group, Lesson, Semester, Subject
 from course.serializer import (CitySerializer, CourseSerializer,
-                               GroupSerializer, LessonSerializer,
-                               ListCourseSerializer, SemesterSerializer,
-                               SubjectSerializer)
+                               GroupSerializer, LearnSerializer,
+                               LessonSerializer, ListCourseSerializer,
+                               SemesterSerializer, SubjectSerializer)
 
 
 class CityViewSet(ModelViewSet):
@@ -40,3 +43,18 @@ class LessonViewSet(ModelViewSet):
 class SubjectViewSet(ModelViewSet):
     queryset = Subject.objects.order_by('-id')
     serializer_class = SubjectSerializer
+
+
+class Learn(APIView):
+    serializer_class = LearnSerializer
+
+    def post(self, request):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            fname = serializer.validated_data.get("fname")
+            lname = serializer.validated_data.get("lname")
+            fullname = fname + " " + lname
+            return Response({"full_name": fullname},
+                            status=status.HTTP_201_CREATED)
+        return Response({"errors": serializer.errors},
+                        status=status.HTTP_400_BAD_REQUEST)

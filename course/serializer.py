@@ -53,3 +53,8 @@ class SubjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Subject
         fields = ['id', 'name', 'available', 'image']
+
+
+class LearnSerializer(serializers.Serializer):
+    fname = serializers.CharField(required=True, max_length=10)
+    lname = serializers.CharField(required=True, max_length=10)
